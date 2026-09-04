@@ -41,14 +41,26 @@
       img.loading = 'lazy';
       img.decoding = 'async';
 
-      // If a link breaks (an expired Discord CDN URL, a deleted upload) the
-      // tile is removed rather than left showing a broken-image icon.
+      // If an image fails, try once more before giving up. A dropped
+      // connection on patchy mobile data shouldn't permanently remove a
+      // logo from the grid - only a genuinely missing file should.
+      var retried = false;
       img.addEventListener('error', function () {
+        if (!retried) {
+          retried = true;
+          window.setTimeout(function () {
+            img.src = imageSrc(item.img) +
+                      (item.img.indexOf('?') === -1 ? '?retry=1' : '&retry=1');
+          }, 1200);
+          return;
+        }
+        // Second attempt failed too - hide the tile rather than leave a
+        // broken-image icon sitting in the grid.
         li.hidden = true;
         li.dataset.broken = 'true';
         if (window.console) {
-          console.warn('Logo image failed to load: ' + item.img +
-                       ' - check the link in assets/js/work.js');
+          console.warn('Logo image failed to load twice: ' + item.img +
+                       ' - check the file or link in assets/js/work.js');
         }
       });
 
