@@ -34,6 +34,32 @@ and it stays there.
 
 ---
 
+## The "Made by hand" section
+
+Two wide images sit near the top of the page: a Photoshop screenshot of a
+poster mid-build, and the finished poster beside it. They're the proof that
+the work is drawn by hand rather than generated, which is worth a lot in this
+market.
+
+These are **not** square like the portfolio tiles, so they use a separate
+script:
+
+1. Put the image in `_originals/showcase/`
+2. Run `python add-showcase.py`
+3. Reference the new filename in `index.html`
+
+Output lands in `assets/img/process/`, keeping the original shape.
+
+**Filenames starting with `raw-` skip the watermark.** That's deliberate:
+finished artwork gets marked like everything else, but a work-in-progress
+screenshot shouldn't be — covering your evidence in watermarks undercuts the
+point of showing it.
+
+To swap either image, keep the same filename and re-run the script; no HTML
+changes needed.
+
+---
+
 ## About the watermarks
 
 Every logo on the site has a watermark **burned into the pixels**.
@@ -79,13 +105,15 @@ index.html              The whole site. All the words live here.
 robots.txt              Tells Google it may index the site.
 .nojekyll               Stops GitHub Pages mangling folders. Leave it.
 add-logos.py            Watermarks new logos and updates the portfolio.
+add-showcase.py         Handles the wide images in "Made by hand".
 _originals/             Clean logos. Git-ignored - never published.
 
 assets/
   css/style.css         All styling. Colours are at the very top.
   js/work.js            ← YOUR LOGOS GO HERE
   js/main.js            Site behaviour. You shouldn't need to touch this.
-  img/work/             The logo images.
+  img/work/             The logo images (square portfolio tiles).
+  img/process/          The wide "Made by hand" images.
   img/brand/            Favicon.
 ```
 

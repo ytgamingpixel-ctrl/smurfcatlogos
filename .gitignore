@@ -19,3 +19,6 @@ desktop.ini
 # add-logos.py reads from here and writes watermarked copies into
 # assets/img/work/, which is the only version the website serves.
 _originals/
+
+# Local dev-server config for Claude Code - not part of the site
+.claude/

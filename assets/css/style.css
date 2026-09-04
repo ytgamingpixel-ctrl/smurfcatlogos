@@ -9,11 +9,12 @@
      05. Hero
      06. Marquee
      07. Work grid
-     08. Process
-     09. What you get
-     10. FAQ
-     11. Contact / CTA / Footer
-     12. Responsive
+     08. Made by hand
+     09. Process
+     10. What you get
+     11. FAQ
+     12. Contact / CTA / Footer
+     13. Responsive
    =================================================================== */
 
 
@@ -441,7 +442,78 @@ button:hover .swap__out, .swap:hover .swap__out { transform: translateY(0); }
 .work-card:hover::after { opacity: 1; }
 
 
-/* ── 08. PROCESS ─────────────────────────────────────────────────── */
+
+/* ── 08. MADE BY HAND ────────────────────────────────────────────── */
+.section--made {
+  background: var(--panel);
+  color: var(--ink-onDark);
+}
+.section--made .h2 { color: var(--ink-onDark); }
+
+.made__lede {
+  font-size: clamp(1.0625rem, 1.3vw, 1.3rem);
+  line-height: 1.5;
+  letter-spacing: -.012em;
+  max-width: 62ch;
+  color: var(--ink-onDark-soft);
+  margin-top: -1.5rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.made {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.shot { display: grid; gap: 1rem; margin: 0; }
+
+.shot__frame {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border: 1px solid var(--line-dark);
+  background: var(--panel-2);
+  overflow: hidden;
+}
+/* contain, not cover - cropping the layer stack would defeat the point */
+.shot__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+/* Same download shield as the portfolio tiles: right-click and long-press
+   land here instead of the <img>. The watermark is the real protection. */
+.shot__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.shot figcaption { display: grid; gap: .25rem; }
+.shot figcaption b {
+  font-size: .9375rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.shot figcaption span {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-onDark-soft);
+}
+
+.made__note {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  max-width: 58ch;
+  color: var(--ink-onDark-soft);
+}
+
+
+/* ── 09. PROCESS ─────────────────────────────────────────────────── */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -476,7 +548,7 @@ button:hover .swap__out, .swap:hover .swap__out { transform: translateY(0); }
 
 
 
-/* ── 09. WHAT YOU GET ────────────────────────────────────────────── */
+/* ── 10. WHAT YOU GET ────────────────────────────────────────────── */
 .section--deliver { background: var(--ground-2); }
 
 .deliver {
@@ -509,7 +581,7 @@ button:hover .swap__out, .swap:hover .swap__out { transform: translateY(0); }
 .ticks--onDark li::before { background: var(--accent-lift); }
 
 
-/* ── 10. FAQ ─────────────────────────────────────────────────────── */
+/* ── 11. FAQ ─────────────────────────────────────────────────────── */
 .faq { border-top: 1px solid var(--line); max-width: 68rem; }
 
 .faq__item { border-bottom: 1px solid var(--line); }
@@ -558,7 +630,7 @@ button:hover .swap__out, .swap:hover .swap__out { transform: translateY(0); }
 }
 
 
-/* ── 11. CONTACT / CTA / FOOTER ──────────────────────────────────── */
+/* ── 12. CONTACT / CTA / FOOTER ──────────────────────────────────── */
 .cta {
   background: var(--panel);
   color: var(--ink-onDark);
@@ -658,7 +730,7 @@ button:hover .swap__out, .swap:hover .swap__out { transform: translateY(0); }
 }
 
 
-/* ── 12. RESPONSIVE ──────────────────────────────────────────────── */
+/* ── 13. RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .nav { display: none; }               /* keep the header simple on phones */
 
@@ -667,6 +739,7 @@ button:hover .swap__out, .swap:hover .swap__out { transform: translateY(0); }
   .steps { grid-template-columns: 1fr; }
 
   .deliver,
+  .made,
   .cta__grid { grid-template-columns: 1fr; }
 }
 
