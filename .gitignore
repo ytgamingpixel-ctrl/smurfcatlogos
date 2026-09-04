@@ -1,0 +1,21 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Design source files - keep these out of the public site
+*.ai
+*.psd
+*.afdesign
+*.afphoto
+*.fig
+
+# Clean, unwatermarked logo originals - NEVER publish these.
+# add-logos.py reads from here and writes watermarked copies into
+# assets/img/work/, which is the only version the website serves.
+_originals/
